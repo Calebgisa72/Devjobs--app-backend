@@ -11,7 +11,7 @@ function isValidEmail(email: string) {
 export class AuthController {
     static async signup(req: Request, res: Response) {
         try {
-            const { firstName, lastName, email, password, confirmPassword } = req.body;
+            const { firstName, lastName,type , email, password, confirmPassword } = req.body;
 
             let checkEmail = isValidEmail(email);
             if(!checkEmail){
@@ -35,12 +35,14 @@ export class AuthController {
                     firstName,
                     lastName,
                     email,
+                    type,
                     password: hashedPassword,
                 },
                 select: {
                     id: true,
                     firstName: true,
                     lastName: true,
+                    type: true,
                     email: true,
                     createdDate: true,
                 },
@@ -83,6 +85,7 @@ export class AuthController {
                     id: true,
                     firstName: true,
                     lastName: true,
+                    type: true,
                     email: true,
                     createdDate: true,
                 },
@@ -108,6 +111,7 @@ export class AuthController {
                     id: true,
                     firstName: true,
                     lastName: true,
+                    type: true,
                     email: true,
                     createdDate: true,
                 },

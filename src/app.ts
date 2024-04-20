@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
-    res.status(200).send('Welcome To My Brand');
+    res.status(200).send('Welcome To Dev Jops API');
 })
 
 app.use('/api/auth', authRoutes);

@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export interface User {
+export interface Users {
     id: number;
     firstName: string;
     lastName: string;

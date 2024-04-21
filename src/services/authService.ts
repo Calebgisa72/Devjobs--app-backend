@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const secretKey = 'SecretKey';
+const secretKey = 'jobDev SecretKey';
 
 export const generateToken = (payload: any): string => {
     return jwt.sign(payload, secretKey, { expiresIn: '1h' });

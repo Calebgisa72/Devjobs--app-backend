@@ -90,7 +90,7 @@ export class AuthController {
                     createdDate: true,
                 },
             });
-            return res.status(200).json(users);
+            return res.status(200).json({data: users});
         } catch (error) {
             console.error('Error fetching users:', error);
             return res.status(500).json({ error: 'Internal server error' });
@@ -101,9 +101,6 @@ export class AuthController {
     static async getUserById(req: Request, res: Response) {
         try {
             const userId = parseInt(req.params.id);
-            if (isNaN(userId)) {
-                return res.status(400).json({ message: 'Invalid user ID' });
-            }
 
             const user = await UserModel.findUnique({
                 where: { id: userId },
@@ -120,10 +117,11 @@ export class AuthController {
                 return res.status(404).json({ message: 'User not found' });
             }
 
-            return res.json(user);
+            return res.json({data: user});
         } catch (error) {
             console.error('Error fetching user by ID:', error);
             return res.status(500).json({ error: 'Internal server error' });
         }
     }
+
 }

@@ -22,3 +22,33 @@ model User {
   password    String
   createdDate DateTime @default(now())
 }
+
+model Job {
+  id          Int          @id @default(autoincrement())
+  logo        String
+  posted      DateTime     @default(now())
+  jobType     String
+  title       String
+  company     String
+  country     String
+  description String?
+  webLink     String
+  requirements Requirement[] @relation("jobRequirements")
+  whatToDo    WhatToDo[]     @relation("whatTodo") 
+}
+
+model Requirement {
+  id          Int      @id @default(autoincrement())
+  description String
+  jobId       Int
+  job         Job      @relation("jobRequirements", fields: [jobId], references: [id])
+  items       String[]
+}
+
+model WhatToDo {
+  id          Int      @id @default(autoincrement())
+  description String
+  jobId       Int
+  job         Job      @relation("whatTodo", fields: [jobId], references: [id])
+  items       String[]
+}
